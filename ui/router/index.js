@@ -76,10 +76,13 @@ router.use((req, res, next) => {
   res.redirect('/login');
 });
 
+// Static file route
 router.use(express.static('public_authenticated'));
 
+// API route
 router.use('/api', require('./api'));
 
+// Route after logout
 router.get('/*', (req, res) => {
   res.header('Content-Type', 'text/html');
   res.render('app');
